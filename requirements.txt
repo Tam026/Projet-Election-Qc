@@ -1,5 +1,12 @@
+<<<<<<< HEAD
 streamlit
 pandas
 geopandas
 folium
+=======
+streamlit
+pandas
+geopandas
+folium
+>>>>>>> a73aae504659d27642d712aaa2e498abd1f0ee2c
 streamlit-folium

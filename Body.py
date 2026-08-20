@@ -514,7 +514,7 @@ with tab2:
 
             st.divider()
     
-            st.subheader(f"Zoom sur {circ}")
+            st.header(f"Zoom sur {circ}")
             geom = carte_fusionnee[carte_fusionnee["Circonscription"] == circ]
 
             if not geom.empty:

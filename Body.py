@@ -10,8 +10,27 @@ import folium
 from streamlit_folium import st_folium
 import unicodedata
 
-st.markdown(
-    '<meta name="google-adsense-account" content="ca-pub-3873345853360990">',unsafe_allow_html=True)
+
+# --- INJECTION DE LA BALISE META ADSENSE ---
+def injecter_balise_meta():
+    # Trouve le fichier index.html source de Streamlit sur le serveur
+    chemin_index = os.path.join(os.path.dirname(st.__file__), "static", "index.html")
+    
+    # Votre balise Meta exacte fournie par Google
+    balise_meta = '<meta name="google-adsense-account" content="ca-pub-3873345853360990">'
+    
+    if os.path.exists(chemin_index):
+        with open(chemin_index, "r", encoding="utf-8") as f:
+            html_content = f.read()
+        
+        # Si la balise n'est pas déjà présente dans le fichier, on l'injecte juste après <head>
+        if "google-adsense-account" not in html_content:
+            html_modifie = re.sub(r"<head>", "<head>" + balise_meta, html_content)
+            with open(chemin_index, "w", encoding="utf-8") as f:
+                f.write(html_modifie)
+
+# Exécuter l'injection avant de charger le reste de l'application
+injecter_balise_meta()
 
 st.markdown("""
 <style>

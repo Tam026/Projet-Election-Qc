@@ -10,6 +10,8 @@ import folium
 from streamlit_folium import st_folium
 import unicodedata
 
+st.markdown(
+    '<meta name="google-adsense-account" content="ca-pub-3873345853360990">',unsafe_allow_html=True)
 
 st.markdown("""
 <style>

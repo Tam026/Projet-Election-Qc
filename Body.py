@@ -3,6 +3,7 @@ import pandas as pd
 import streamlit as st
 import geopandas as gpd
 import plotly.express as px
+import os
 import re
 import io
 import folium
@@ -268,7 +269,7 @@ with tab1 :
                     unsafe_allow_html=True,
                 )
             
-            base_path = f"C:\\Users\\anham\\VSCode\\Elxn\\photos\\{parti}"
+            base_path = os.path.join("photos", parti)
             ligne = c[c["Parti"].str.contains(mot_cle, regex=False, na=False)]
             st.subheader(f"{mot_cle}")
             

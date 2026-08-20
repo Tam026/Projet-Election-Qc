@@ -321,7 +321,7 @@ with tab1 :
     col1, col2, col3, col4, col5 = st.columns(5, gap = "xxsmall")
     with col1:photo_chef("C.A.Q.-E.F.L.", "Coalition avenir Québec - L'équipe François Legault", "François Legault", "La Presse canadienne / Ryan REMIORZ")
     with col2:
-    photo_chef("P.L.Q.-Q.L.P.", "Parti libéral du Québec", "Dominique Anglade", "La Presse / Philippe BOIVIN")
+        photo_chef("P.L.Q.-Q.L.P.", "Parti libéral du Québec", "Dominique Anglade", "La Presse / Philippe BOIVIN")
     if "P.L.Q./Q.L.P." in c.values:
         ligne_plq = c[c["Parti"].str.contains("Parti libéral du Québec/Quebec Liberal Party", regex=False, na=False)]
         deputes_plq = ligne_plq["Députés"].iloc[0]

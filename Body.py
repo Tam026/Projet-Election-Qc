@@ -322,33 +322,33 @@ with tab1 :
     with col1:photo_chef("C.A.Q.-E.F.L.", "Coalition avenir Québec - L'équipe François Legault", "François Legault", "La Presse canadienne / Ryan REMIORZ")
     with col2:
         photo_chef("P.L.Q.-Q.L.P.", "Parti libéral du Québec", "Dominique Anglade", "La Presse / Philippe BOIVIN")
-    if "P.L.Q./Q.L.P." in c.values:
-        ligne_plq = c[c["Parti"].str.contains("Parti libéral du Québec/Quebec Liberal Party", regex=False, na=False)]
-        deputes_plq = ligne_plq["Députés"].iloc[0]
-        pourcentage_plq = ligne_plq["Pourcentage de votes"].iloc[0]
+        if "P.L.Q./Q.L.P." in c.values:
+            ligne_plq = c[c["Parti"].str.contains("Parti libéral du Québec/Quebec Liberal Party", regex=False, na=False)]
+            deputes_plq = ligne_plq["Députés"].iloc[0]
+            pourcentage_plq = ligne_plq["Pourcentage de votes"].iloc[0]
 
-        if deputes_plq == 0:
-            st.warning("Aucun candidat élu")
-        else:
-            st.write(f"{pourcentage_plq:.2f}% des votes obtenus\n\n{deputes_plq} candidats élus")
-        st.write(f"Cheffe: Dominique Anglade")
+            if deputes_plq == 0:
+                st.warning("Aucun candidat élu")
+            else:
+                st.write(f"{pourcentage_plq:.2f}% des votes obtenus\n\n{deputes_plq} candidats élus")
+            st.write(f"Cheffe: Dominique Anglade")
 
-        
-        with st.container(key={"PLQQLP"}):
             
-            st.markdown(
-                f"""
-                <style>
-                div.st-key-parti_{"PLQQLP"} {{
-                    border: 3px solid {"#FF4749"} !important;
-                    border-radius: 8px !important;
-                    padding: 10px !important;
-                    box-sizing: border-box;
-                }}
-                </style>
-                """,
-                unsafe_allow_html=True,
-            )
+            with st.container(key={"PLQQLP"}):
+                
+                st.markdown(
+                    f"""
+                    <style>
+                    div.st-key-parti_{"PLQQLP"} {{
+                        border: 3px solid {"#FF4749"} !important;
+                        border-radius: 8px !important;
+                        padding: 10px !important;
+                        box-sizing: border-box;
+                    }}
+                    </style>
+                    """,
+                    unsafe_allow_html=True,
+                )
 
         
     with col3:photo_chef("Q.S.", "Québec solidaire", "Gabriel Nadeau-Dubois", "Le Devoir / Marie-France COALLIER")

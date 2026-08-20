@@ -3,6 +3,7 @@ import pandas as pd
 import streamlit as st
 import geopandas as gpd
 import plotly.express as px
+import os
 import re
 import io
 import folium
@@ -268,7 +269,7 @@ with tab1 :
                     unsafe_allow_html=True,
                 )
             
-            base_path = f"C:\\Users\\anham\\VSCode\\Elxn\\photos\\{parti}"
+            base_path = os.path.join("photos", parti)
             ligne = c[c["Parti"].str.contains(mot_cle, regex=False, na=False)]
             st.subheader(f"{mot_cle}")
             
@@ -320,13 +321,17 @@ with tab1 :
     col1, col2, col3, col4, col5 = st.columns(5, gap = "xxsmall")
     with col1:photo_chef("C.A.Q.-E.F.L.", "Coalition avenir Québec - L'équipe François Legault", "François Legault", "La Presse canadienne / Ryan REMIORZ")
     with col2:
-        photo_chef("P.L.Q.-Q.L.P.", "Parti libéral du Québec", "Dominique Anglade", "La Presse / Philippe BOIVIN")
-        if "P.L.Q./Q.L.P." in c.values:
-            if {c[c["Parti"].str.contains("Parti libéral du Québec/Quebec Liberal Party", regex=False, na=False)]['Députés'].iloc[0]} == 0:
-                st.warning("Aucun candidat élu")
-            else:
-                st.write(f"{c[c["Parti"].str.contains("Parti libéral du Québec/Quebec Liberal Party", regex=False, na=False)]['Pourcentage de votes'].iloc[0]:.2f}% des votes obtenus\n\n{c[c["Parti"].str.contains("Parti libéral du Québec/Quebec Liberal Party", regex=False, na=False)]['Députés'].iloc[0]} candidats élus")
-            st.write(f"Cheffe: Dominique Anglade")
+    photo_chef("P.L.Q.-Q.L.P.", "Parti libéral du Québec", "Dominique Anglade", "La Presse / Philippe BOIVIN")
+    if "P.L.Q./Q.L.P." in c.values:
+        ligne_plq = c[c["Parti"].str.contains("Parti libéral du Québec/Quebec Liberal Party", regex=False, na=False)]
+        deputes_plq = ligne_plq["Députés"].iloc[0]
+        pourcentage_plq = ligne_plq["Pourcentage de votes"].iloc[0]
+
+        if deputes_plq == 0:
+            st.warning("Aucun candidat élu")
+        else:
+            st.write(f"{pourcentage_plq:.2f}% des votes obtenus\n\n{deputes_plq} candidats élus")
+        st.write(f"Cheffe: Dominique Anglade")
 
         
         with st.container(key={"PLQQLP"}):
